@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | AI Blogging Platform</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #0f0f0f, #1a1a2e, #3a0ca3, #7209b7);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      animation: float 12s infinite ease-in-out;
+    }
+    .p1 { width: 120px; height: 120px; top: -50px; left: -60px; }
+    .p2 { width: 80px; height: 80px; bottom: -40px; right: 30px; animation-delay: 4s; }
+    .p3 { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 7s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Login Card */
+    .login-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(25px);
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 420px;
+      z-index: 2;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .login-card h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ffd700, #ff6ec4, #00f5d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-card p {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Input Group */
+    .input-group {
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      border: none;
+      border-radius: 50px;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid transparent;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    .input-group input::placeholder { color: rgba(255,255,255,0.6); }
+    .input-group input:focus {
+      border: 1px solid #ffd700;
+      box-shadow: 0 0 10px rgba(255,215,0,0.6);
+    }
+    .input-group span {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 1rem;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #ffd700, #ff6ec4);
+      color: #1a1a2e;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #ff6ec4, #ffd700);
+      transform: scale(1.05);
+    }
+    .btn-google { background: #db4437; color: #fff; }
+    .btn-facebook { background: #4267B2; color: #fff; }
+    .btn-google:hover, .btn-facebook:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    /* Options */
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .options a { color: #ffd700; text-decoration: none; }
+    .options a:hover { text-decoration: underline; }
+
+    /* Signup link */
+    .signup-link {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .signup-link a { color: #ffd700; font-weight: 600; }
+    .signup-link a:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating Particles -->
+  <span class="particle p1"></span>
+  <span class="particle p2"></span>
+  <span class="particle p3"></span>
+
+  <!-- Login Card -->
+  <div class="login-card">
+    <h2>Welcome Back</h2>
+    <p>Log in to continue creating with AI ✨</p>
+
+    <!-- Form -->
+    <form action="/login" method="POST">
+<div class="input-group">
+  <span>📧</span>
+  <input type="text" name="username" placeholder="Username" required>
+</div>
+<div class="input-group">
+  <span>🔑</span>
+  <input type="password" name="password" placeholder="Password" required>
+</div>
+
+
+      <div class="options">
+        <label><input type="checkbox" name="remember"> Remember me</label>
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <button class="btn btn-google">Continue with Google</button>
+    <button class="btn btn-facebook">Continue with Facebook</button>
+
+    <div class="signup-link">
+      Don’t have an account? <a href="/register">Sign up</a>
+    </div>
+  </div>
+
+</body>
+</html>

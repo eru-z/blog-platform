@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | AI Blogging Platform</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(-45deg, #0f0f0f, #1a1a2e, #3a0ca3, #7209b7);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Floating Particles */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      animation: float 12s infinite ease-in-out;
+    }
+    .p1 { width: 120px; height: 120px; top: -50px; left: -60px; }
+    .p2 { width: 80px; height: 80px; bottom: -40px; right: 30px; animation-delay: 4s; }
+    .p3 { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 7s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Register Card - smaller */
+    .register-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(25px);
+      padding: 2rem; /* smaller padding */
+      border-radius: 1.2rem; /* slightly smaller radius */
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      width: 100%;
+      max-width: 400px; /* reduced from 450px */
+      z-index: 2;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .register-card h2 {
+      font-size: 1.8rem; /* slightly smaller */
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ffd700, #ff6ec4, #00f5d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .register-card p {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Input Group */
+    .input-group {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      outline: none;
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid transparent;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    .input-group input::placeholder { color: rgba(255,255,255,0.6); }
+    .input-group input:focus {
+      border: 1px solid #ffd700;
+      box-shadow: 0 0 8px rgba(255,215,0,0.6);
+    }
+    .input-group span {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Buttons */
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, opacity 0.3s ease;
+      margin-bottom: 0.8rem;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #ffd700, #ff6ec4);
+      color: #1a1a2e;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #ff6ec4, #ffd700);
+    }
+    .btn-google { background: #db4437; color: #fff; }
+    .btn-facebook { background: #4267B2; color: #fff; }
+    .btn-google:hover, .btn-facebook:hover { opacity: 0.9; }
+
+    /* Terms */
+    .terms {
+      margin: 0.8rem 0;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      text-align: left;
+    }
+    .terms a { color: #ffd700; text-decoration: none; }
+    .terms a:hover { text-decoration: underline; }
+
+    /* Login link */
+    .login-link {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .login-link a { color: #ffd700; font-weight: 600; }
+    .login-link a:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating Particles -->
+  <span class="particle p1"></span>
+  <span class="particle p2"></span>
+  <span class="particle p3"></span>
+
+  <!-- Register Card -->
+  <div class="register-card">
+    <h2>Create Account</h2>
+    <p>Join the AI blogging revolution 🚀</p>
+
+    <!-- Form -->
+    <form action="/register" method="POST">
+      <div class="input-group">
+        <span>👤</span>
+        <input type="text" name="username" placeholder="Username" required>
+      </div>
+      <div class="input-group">
+        <span>📧</span>
+        <input type="email" name="email" placeholder="Email Address" required>
+      </div>
+      <div class="input-group">
+        <span>🔑</span>
+        <input type="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="input-group">
+        <span>🔒</span>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+      </div>
+
+      <div class="terms">
+        <label>
+          <input type="checkbox" required> I agree to the 
+          <a href="/terms">Terms of Service</a> & <a href="/privacy">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    <button class="btn btn-google">Sign up with Google</button>
+    <button class="btn btn-facebook">Sign up with Facebook</button>
+
+    <div class="login-link">
+      Already have an account? <a href="/login">Login</a>
+    </div>
+  </div>
+
+</body>
+</html>
